@@ -56,4 +56,14 @@ adminApp.put("/admin/block-unblock/:id",requireAuth({signInUrl:"unauthorized"}) 
     res.send({message:"Unauthorized request"})
   })
   
+  adminApp.get('/users', requireAuth({ signInUrl: "unauthorized" }), expressAsyncHandler(async (req, res) => {
+    try {
+      const users = await UserAuthor.find({});
+      res.status(200).send({ message: "Users fetched successfully", payload: users });
+    } catch (error) {
+      console.error("Error fetching users:", error);
+      res.status(500).send({ message: "Internal Server Error" });
+    }
+  }));
+  
   module.exports = adminApp;

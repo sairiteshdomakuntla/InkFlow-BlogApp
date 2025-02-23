@@ -24,15 +24,6 @@
 
 
 
-// //fetch all users
-// userApp.get("/users",expressAsyncHandler(async (req, res) => {
-//   const userId = req.headers.authorization?.split(" ")[1]
-//   // console.log("user",userId)
-//   const users = await UserAuthor.find({ _id: { $ne: userId },role: { $ne: 'admin' }}).select("-password");
-//   res.status(200).send({ message: "Users fetched successfully", payload: users });
-
-// })
-// )
 // module.exports=userApp;
 
 
@@ -63,5 +54,16 @@ userApp.put('/comment/:articleId',expressAsyncHandler(async(req,res)=>{
     //send res
     res.send({message:"comment added",payload:articleWithComments})
 }))
+
+
+//fetch all users
+userApp.get("/users",expressAsyncHandler(async (req, res) => {
+    const userId = req.headers.authorization?.split(" ")[1]
+    // console.log("user",userId)
+    const users = await UserAuthor.find({ _id: { $ne: userId },role: { $ne: 'admin' }}).select("-password");
+    res.status(200).send({ message: "Users fetched successfully", payload: users });
+  
+  })
+  )
 
 module.exports=userApp;

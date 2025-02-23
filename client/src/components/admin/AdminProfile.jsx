@@ -1,30 +1,30 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { Users, Shield } from 'lucide-react';
+import './AdminProfile.css';
+import { motion } from 'framer-motion';
 
 function AdminProfile() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-black pt-16">
-      <div className="container mx-auto px-4">
-        {/* Navigation Header */}
-        <div className="bg-black/40 backdrop-blur-sm border border-gray-800 rounded-xl p-6 mb-8">
-          <h1 className="text-2xl font-bold text-white mb-6 flex items-center">
-            <Shield className="w-6 h-6 mr-2 text-primary-400" />
+    <div className="admin-dashboard">
+      <div className="admin-header">
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          <h1 className="admin-title">
+            <Shield className="w-6 h-6 text-red-500" />
             Admin Dashboard
           </h1>
           
-          <nav>
-            <ul className="flex flex-wrap gap-4">
+          <nav className="admin-nav">
+            <ul className="flex gap-4">
               <li>
                 <NavLink 
                   to="UsersnAuthors" 
-                  className={({ isActive }) => `
-                    px-6 py-3 rounded-lg flex items-center gap-2 transition-all duration-300
-                    ${isActive 
-                      ? 'bg-primary-500 text-white' 
-                      : 'bg-black/40 text-gray-400 hover:bg-black/60 hover:text-white border border-gray-800'
-                    }
-                  `}
+                  className={({ isActive }) =>
+                    `nav-link ${isActive ? 'nav-link-active' : ''}`
+                  }
                 >
                   <Users className="w-5 h-5" />
                   Users & Authors
@@ -49,13 +49,17 @@ function AdminProfile() {
               */}
             </ul>
           </nav>
-        </div>
-
-        {/* Outlet Container */}
-        <div className="bg-black/40 backdrop-blur-sm border border-gray-800 rounded-xl p-6">
-          <Outlet />
-        </div>
+        </motion.div>
       </div>
+
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.2 }}
+        className="admin-content"
+      >
+        <Outlet />
+      </motion.div>
     </div>
   );
 }

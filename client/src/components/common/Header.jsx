@@ -30,12 +30,21 @@ const Header = () => {
       <div className="header-container">
         {/* Logo */}
         <Link to="/" className="logo">
-          <img 
+          <motion.img 
             src={logo} 
-            alt="Logo" 
-            className="w-8 h-8 object-contain"
-            style={{ width: '75px', height: '75px' }}
+            alt="InkFlow" 
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3 }}
           />
+          <motion.span 
+            className="logo-text"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
+          >
+            InkFlow
+          </motion.span>
         </Link>
 
         {/* Desktop Navigation */}

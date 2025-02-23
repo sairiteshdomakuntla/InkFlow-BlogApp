@@ -10,6 +10,7 @@ import { motion } from 'framer-motion';
 import blog1 from '../../assets/1.jpg';
 import blog2 from '../../assets/2.jpg';
 import blog3 from '../../assets/3.jpg';
+import bg from '../../assets/bg.jpg';
 // import heroBgLight from '../../assets/hero-bg-light.jpg';
 // import heroBgDark from '../../assets/hero-bg-dark.jpg';
 // import quoteBgLight from '../../assets/hero-bg-light.jpg';
@@ -43,7 +44,7 @@ function Home() {
   }, [isLoaded]);
 
   async function onSelectRole(e) {
-    console.log("Role selected:", e.target.value); // Debug log
+    // console.log("Role selected:", e.target.value); // Debug log
     setError('');
     const selectedRole = e.target.value;
     
@@ -54,18 +55,18 @@ function Home() {
         role: selectedRole
       };
 
-      console.log("Sending request to:", `${BACKEND_URL}/${selectedRole}-api/${selectedRole}`); // Debug log
+      // console.log("Sending request to:", `${BACKEND_URL}/${selectedRole}-api/${selectedRole}`); // Debug log
       
       const res = await axios.post(
         `${BACKEND_URL}/${selectedRole}-api/${selectedRole}`, 
         updatedUser
       );
 
-      console.log("Response:", res.data); // Debug log
+      // console.log("Response:", res.data); // Debug log
 
       if (res.data.message === selectedRole) {
         // Show success toast
-        toast.success(`Successfully registered as ${selectedRole}`);
+        toast.success(`Successfully signed in as ${selectedRole}`);
         
         // Update context and localStorage
         setCurrentUser(res.data.payload);
@@ -116,6 +117,10 @@ function Home() {
     }
   ];
 
+  function loginmsg(){
+    toast.error("Login to read Blogs!")
+  }
+
   const GuestHome = () => (
     <div className="home-container">
       <section className="hero-section">
@@ -123,10 +128,10 @@ function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center px-4 relative z-10"
+          className="hero-content"
         >
-          <h1 className="text-4xl md:text-6xl font-bold text-[#EAEAEA] mb-6">
-            Welcome to Our Blog Community
+          <h1 className="text-4xl md:text-6xl font-bold text-[#EAEAEA]">
+            Welcome to InkFlow
           </h1>
           <p className="text-xl text-[#EAEAEA] max-w-2xl mx-auto">
             Discover stories that inspire, educate, and entertain
@@ -151,7 +156,7 @@ function Home() {
             <div className="blog-content">
               <h3 className="blog-title">{post.title}</h3>
               <p className="blog-excerpt">{post.excerpt}</p>
-              <button className="read-more">Read More</button>
+              <button className="read-more" onClick={loginmsg}>Read More</button>
             </div>
           </motion.div>
         ))}
@@ -236,7 +241,7 @@ function Home() {
 
   return (
     <main className="relative">
-      <button
+      {/* <button
         onClick={toggleTheme}
         className="fixed top-4 right-4 z-50 p-2 rounded-full bg-gray-200 dark:bg-gray-800 transition-colors"
       >
@@ -245,7 +250,7 @@ function Home() {
         ) : (
           <Moon className="w-6 h-6 text-gray-700" />
         )}
-      </button>
+      </button> */}
 
       {isSignedIn ? (
         <AuthenticatedHome />
