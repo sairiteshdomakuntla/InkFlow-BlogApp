@@ -53,10 +53,10 @@ function Footer() {
                 Connect with Us
               </h6>
               <ul className="list-unstyled footer-link mt-4">
-                <li><a href="#">Facebook</a></li>
-                <li><a href="#">Twitter</a></li>
-                <li><a href="#">Instagram</a></li>
+                <li><a href="#">sairiteshdomakuntla@gmail.com</a></li>
+                <li><a href="#">+91 8639154193</a></li>
                 <li><a href="#">LinkedIn</a></li>
+                <li><a href="#">Twitter</a></li>
               </ul>
             </div>
           </div>
