@@ -47,8 +47,8 @@ const Header = () => {
           </motion.span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
+        {/* Desktop Navigation - Only visible on desktop */}
+        <nav className="nav-links hidden md:flex">
           {!isSignedIn ? (
             <div className="flex items-center space-x-4">
               <Link 
@@ -105,53 +105,60 @@ const Header = () => {
         </button>
       </div>
 
-      {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <motion.nav
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.2 }}
-          className="md:hidden py-3 border-t border-gray-200 dark:border-gray-700"
-        >
-          <div className="flex flex-col space-y-3">
-            {!isSignedIn ? (
-              <>
-                <Link 
-                  to="/signin"
-                  className="text-sm text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
-                >
-                  Sign In
-                </Link>
-                <Link 
-                  to="/signup"
-                  className="text-sm px-3 py-1.5 bg-gray-900 text-white rounded-md hover:bg-gray-800 transition-colors inline-block w-fit"
-                >
-                  Sign Up
-                </Link>
-              </>
-            ) : (
-              <div className="flex flex-col space-y-3">
-                <div className="flex items-center space-x-2">
-                  <img
-                    src={user.imageUrl}
-                    alt={user.firstName}
-                    className="w-7 h-7 rounded-full"
-                  />
-                  <span className="text-sm text-gray-700 dark:text-gray-300">
-                    {user.firstName}
-                  </span>
-                </div>
-                <button
-                  onClick={handleSignOut}
-                  className="text-sm px-3 py-1.5 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors w-fit"
-                >
-                  Sign Out
-                </button>
+      {/* Mobile Navigation - Only visible when menu is clicked */}
+      <div className={`mobile-overlay ${isMenuOpen ? 'active' : ''}`} onClick={() => setIsMenuOpen(false)} />
+      <motion.nav
+        className={`mobile-nav ${isMenuOpen ? 'active' : ''}`}
+        initial={false}
+      >
+        <div className="mobile-nav-content">
+          <button 
+            className="close-button"
+            onClick={() => setIsMenuOpen(false)}
+            aria-label="Close menu"
+          >
+            <X className="w-6 h-6" />
+          </button>
+          {!isSignedIn ? (
+            <div className="mobile-auth-buttons">
+              <Link 
+                to="/signin"
+                className="mobile-signin"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Sign In
+              </Link>
+              <Link 
+                to="/signup"
+                className="mobile-signup"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Sign Up
+              </Link>
+            </div>
+          ) : (
+            <div className="mobile-user-profile">
+              <div className="mobile-user-info">
+                <img
+                  src={user.imageUrl}
+                  alt={user.firstName}
+                  className="mobile-user-image"
+                />
+                <span className="mobile-username">{user.firstName}</span>
               </div>
-            )}
-          </div>
-        </motion.nav>
-      )}
+              <button
+                onClick={() => {
+                  handleSignOut();
+                  setIsMenuOpen(false);
+                }}
+                className="mobile-signout"
+              >
+                Sign Out
+              </button>
+            </div>
+          )}
+        </div>
+      </motion.nav>
     </header>
   );
 };
