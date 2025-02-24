@@ -17,6 +17,7 @@ import { DarkModeProvider } from './contexts/DarkModeContext';
 import AdminProfile from './components/admin/AdminProfile.jsx';
 import UsersnAuthors from './components/admin/UsersnAuthors.jsx';
 import { Toaster } from 'react-hot-toast';
+import SSOCallback from './components/common/SSOCallback.jsx';
 
 
 const browserRouterObj = createBrowserRouter([
@@ -36,6 +37,7 @@ const browserRouterObj = createBrowserRouter([
         path: "signup",
         element: <Signup />
       },
+      { path: "signup/sso-callback", element: <SSOCallback /> },
       {
         path: "user-profile/:email",
         element: <UserProfile />,

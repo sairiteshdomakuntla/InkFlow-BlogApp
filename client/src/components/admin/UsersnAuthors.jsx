@@ -14,8 +14,8 @@ const UsersnAuthors = () => {
     const fetchUsers = async () => {
       try {
         const token = await getToken();
-        console.log("Backend URL:", BACKEND_URL);
-        console.log("Token:", token);
+        // console.log("Backend URL:", BACKEND_URL);
+        // console.log("Token:", token);
         
         const response = await axios.get(`${BACKEND_URL}/admin-api/users`, {
           headers: {
