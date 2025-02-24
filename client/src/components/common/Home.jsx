@@ -211,7 +211,7 @@ function Home() {
             </p>
           </motion.div>
 
-          <motion.div
+          {/* <motion.div
             whileHover={{ scale: 1.05 }}
             className="role-card"
             onClick={() => {
@@ -226,7 +226,7 @@ function Home() {
             <p className="role-description">
               Manage users, content, and platform settings
             </p>
-          </motion.div>
+          </motion.div> */}
         </div>
 
         {error && (
