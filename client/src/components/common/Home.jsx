@@ -28,9 +28,9 @@ function Home() {
   const navigate = useNavigate();
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-  const toggleTheme = () => {
-    document.documentElement.classList.toggle('dark-mode');
-  };
+  // const toggleTheme = () => {
+  //   document.documentElement.classList.toggle('dark-mode');
+  // };
 
   useEffect(() => {
     if (isSignedIn === true) {

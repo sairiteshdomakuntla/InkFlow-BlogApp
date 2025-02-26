@@ -28,7 +28,7 @@
 
 /* Clerk form customization */
 .cl-card {
-  background: rgba(26, 26, 26, 0.95) !important;
+  background: rgba(192, 189, 189, 0.95) !important;
   border: 1px solid rgba(255, 49, 49, 0.2) !important;
   border-radius: 12px !important;
   backdrop-filter: blur(10px) !important;
@@ -36,13 +36,13 @@
 }
 
 .cl-headerTitle {
-  color: #EAEAEA !important;
+  /* color: #EAEAEA !important; */
   font-size: 1.5rem !important;
   font-weight: bold !important;
 }
 
 .cl-headerSubtitle {
-  color: #EAEAEA !important;
+  /* color: #EAEAEA !important; */
 }
 
 .cl-footerAction {
