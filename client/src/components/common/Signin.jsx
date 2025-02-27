@@ -9,6 +9,7 @@ function Signin() {
         routing="path" 
         path="/signin" 
         signUpUrl="/signup"
+        redirectUrl="/"
         appearance={{
           elements: {
             card: 'cl-card',

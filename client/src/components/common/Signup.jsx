@@ -9,6 +9,7 @@ function Signup() {
         routing="path" 
         path="/signup" 
         signInUrl="/signin"
+        afterSignUpUrl="/"  
         // forceRedirectUrl="/signup/sso-callback" // ✅ Redirect to callback page
         appearance={{
           elements: {

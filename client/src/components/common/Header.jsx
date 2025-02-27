@@ -100,7 +100,7 @@ const Header = () => {
           {isMenuOpen ? (
             <X className="w-5 h-5 text-gray-700 dark:text-gray-300" />
           ) : (
-            <Menu className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+            <Menu className="w-5 h-5 text-white dark:text-gray-300" />
           )}
         </button>
       </div>

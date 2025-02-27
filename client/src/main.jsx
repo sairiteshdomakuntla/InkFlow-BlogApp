@@ -38,6 +38,7 @@ const browserRouterObj = createBrowserRouter([
         element: <Signup />
       },
       { path: "signup/sso-callback", element: <SSOCallback /> },
+      { path: "signin/sso-callback", element: <SSOCallback /> },
       {
         path: "user-profile/:email",
         element: <UserProfile />,

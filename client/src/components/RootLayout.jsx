@@ -14,7 +14,8 @@ if (!PUBLISHABLE_KEY) {
 
 function RootLayout() {
   return (
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+    <ClerkProvider publishableKey={PUBLISHABLE_KEY} 
+      navigate={(to) => navigate(to)}  >
       <div>
         <Header />
         <div style={{ minHeight: "90vh" }}>

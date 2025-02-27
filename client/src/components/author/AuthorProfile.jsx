@@ -29,11 +29,11 @@ function AuthorProfile() {
         animate={{ opacity: 1, y: 0 }}
         className="author-nav"
       >
-        <div className="nav-links">
+        <div className="author-nav-links">
           <NavLink
             to="articles"
             className={({ isActive }) =>
-              `nav-link ${isActive ? 'nav-link-active' : ''}`
+              `author-nav-link ${isActive ? 'author-nav-link-active' : ''}`
             }
           >
             <FileText className="nav-icon" />
@@ -43,7 +43,7 @@ function AuthorProfile() {
           <NavLink
             to="article"
             className={({ isActive }) =>
-              `nav-link ${isActive ? 'nav-link-active' : ''}`
+              `author-nav-link ${isActive ? 'author-nav-link-active' : ''}`
             }
           >
             <PlusCircle className="nav-icon" />
