@@ -47,6 +47,14 @@ function Home() {
     // console.log("Role selected:", e.target.value); // Debug log
     setError('');
     const selectedRole = e.target.value;
+    const allowedAdminEmail = "sairiteshdomakuntla@gmail.com"; // Your email
+
+    if (selectedRole === 'admin' && currentUser.email !== allowedAdminEmail) {
+      // console.log("admin click chesav")
+      setError("Sorry, only the authorized user can be an admin.");
+      toast.error("Sorry, only the authorized user can be an admin.")
+      return;
+    }
     
     try {
       // First, update the currentUser object with the selected role
@@ -86,7 +94,8 @@ function Home() {
         }
       } else {
         // Show error toast for backend error message
-        toast.error(res.data.message);
+        // toast.error(res.data.message,"you are not ",selectedRole);
+        toast.error(`${res.data.message}\nYour role is not '${selectedRole}'`);
         setError(res.data.message);
       }
     } catch (err) {
@@ -211,7 +220,7 @@ function Home() {
             </p>
           </motion.div>
 
-          {/* <motion.div
+          <motion.div
             whileHover={{ scale: 1.05 }}
             className="role-card"
             onClick={() => {
@@ -226,12 +235,12 @@ function Home() {
             <p className="role-description">
               Manage users, content, and platform settings
             </p>
-          </motion.div> */}
+          </motion.div>
         </div>
 
         {error && (
           <div className="error-message">
-            {error}
+            {/* {error} */}
           </div>
         )}
       </motion.div>

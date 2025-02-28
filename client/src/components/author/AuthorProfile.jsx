@@ -24,7 +24,13 @@ function AuthorProfile() {
 
   return (
     <div className="author-profile">
-      <motion.nav 
+      {userStatus ? (
+        <div className="account-blocked-msg">
+          Your account is blocked. Please contact the admin!
+        </div>
+      ) : (
+        <>
+          <motion.nav 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         className="author-nav"
@@ -60,6 +66,44 @@ function AuthorProfile() {
       >
         <Outlet />
       </motion.div>
+        </>
+      )}
+      {/* <motion.nav 
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="author-nav"
+      >
+        <div className="author-nav-links">
+          <NavLink
+            to="articles"
+            className={({ isActive }) =>
+              `author-nav-link ${isActive ? 'author-nav-link-active' : ''}`
+            }
+          >
+            <FileText className="nav-icon" />
+            My Articles
+          </NavLink>
+          
+          <NavLink
+            to="article"
+            className={({ isActive }) =>
+              `author-nav-link ${isActive ? 'author-nav-link-active' : ''}`
+            }
+          >
+            <PlusCircle className="nav-icon" />
+            New Article
+          </NavLink>
+        </div>
+      </motion.nav>
+
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.2 }}
+        className="author-content"
+      >
+        <Outlet />
+      </motion.div> */}
     </div>
   );
 }
