@@ -180,7 +180,10 @@ function Home() {
         animate={{ opacity: 1, y: 0 }}
         className="role-container"
       >
-        <h1 className="role-title">Choose Your Role</h1>
+        <h1 className="role-title">Choose Your Role.</h1>
+        {/* <p className="role-subtitle">
+          You can't change once selected!
+        </p> */}
         <p className="role-subtitle">
           Select how you want to interact with our community
         </p>

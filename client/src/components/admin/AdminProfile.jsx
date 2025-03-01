@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 function AdminProfile() {
   return (
     <div className="admin-dashboard">
-      <div className="admin-header">
+      {/* <div className="admin-header">
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -29,7 +29,7 @@ function AdminProfile() {
                   <Users className="w-5 h-5" />
                   Users & Authors
                 </NavLink>
-              </li>
+              </li> */}
               {/* Commented nav item styled for future use
               <li>
                 <NavLink 
@@ -47,10 +47,10 @@ function AdminProfile() {
                 </NavLink>
               </li>
               */}
-            </ul>
+            {/* </ul>
           </nav>
         </motion.div>
-      </div>
+      </div>  */}
 
       <motion.div 
         initial={{ opacity: 0 }}
